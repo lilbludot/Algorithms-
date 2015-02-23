@@ -8,6 +8,11 @@ public class Percolation {
        return (i-1)*N + j;
        
    }
+   private void validate(int i, int j, int N) {   // validates i,j, throws exception if out of bounds
+       if (i <= 0 || i > N) throw new IndexOutOfBoundsException("row index i out of bounds");
+       if (j <= 0 || j > N) throw new IndexOutOfBoundsException("row index j out of bounds");
+       
+   }
    public Percolation(int N) {              // create N-by-N grid, with all sites blocked 
         count = N;
         parent = new int[N + 1][N + 1];
@@ -16,7 +21,7 @@ public class Percolation {
         open = new boolean [N + 1] [N + 1];
         for (int i = 1; i < N + 1; i++) {
             for (int j = 1; j < N + 1; j++) {
-                parent[i][j] = xyto1D(i,j,N);
+                parent[i][j] = xyTo1D(i,j,N);
                 size[i][j] = 1;
                 full[i][j] = false;
                 open[i][j] = false;
@@ -25,10 +30,10 @@ public class Percolation {
         }
        
         }
-   public void open(int i, int j)          // open site (row i, column j) if it is not open already
-   public boolean isOpen(int i, int j)     // is site (row i, column j) open?
-   public boolean isFull(int i, int j)     // is site (row i, column j) full?
-   public boolean percolates()             // does the system percolate?
+   //public void open(int i, int j)          // open site (row i, column j) if it is not open already
+   //public boolean isOpen(int i, int j)     // is site (row i, column j) open?
+   //public boolean isFull(int i, int j)     // is site (row i, column j) full?
+   //public boolean percolates()             // does the system percolate?
 
-   public static void main(String[] args   // test client (optional)
+   //public static void main(String[] args   // test client (optional)
 }
