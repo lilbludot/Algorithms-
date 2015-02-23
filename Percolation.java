@@ -5,15 +5,17 @@ public class Percolation {
    private boolean[][] open;  // open[i][j] = true if i,j is open, false otherwise
    private int count;      // number of components 
    private int xyTo1D(int i, int j, int N) {  //private method gives 1D location of site i,j
-       return i*N + j;
+       return (i-1)*N + j;
        
    }
    public Percolation(int N) {              // create N-by-N grid, with all sites blocked 
         count = N;
-        parent = new int[N][N];
-        size = new int[N][N];
-        for (int i = 0; i < N; i++) {
-            for (int j=0; i < N; i++) {
+        parent = new int[N + 1][N + 1];
+        size = new int[N + 1][N + 1];
+        full = new boolean [N + 1] [N + 1];
+        open = new boolean [N + 1] [N + 1];
+        for (int i = 1; i < N + 1; i++) {
+            for (int j = 1; j < N + 1; j++) {
                 parent[i][j] = xyto1D(i,j,N);
                 size[i][j] = 1;
                 full[i][j] = false;
