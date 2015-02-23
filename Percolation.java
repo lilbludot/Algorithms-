@@ -4,15 +4,20 @@ public class Percolation {
    private boolean[][] full; // full[i][j] = true if i,j is full, false otherwise
    private boolean[][] open;  // open[i][j] = true if i,j is open, false otherwise
    private int count;      // number of components 
-   private 
-   public Percolation(int N) {              // create N-by-N grid, with all sites blocked
+   private int xyTo1D(int i, int j, int N) {  //private method gives 1D location of site i,j
+       return i*N + j;
+       
+   }
+   public Percolation(int N) {              // create N-by-N grid, with all sites blocked 
         count = N;
         parent = new int[N][N];
         size = new int[N][N];
         for (int i = 0; i < N; i++) {
             for (int j=0; i < N; i++) {
-                parent[i][j] = i;
+                parent[i][j] = xyto1D(i,j,N);
                 size[i][j] = 1;
+                full[i][j] = false;
+                open[i][j] = false;
                 
             }
         }
